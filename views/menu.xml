@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_rent_receipt_property_root"
+        name="Rent Receipt Management">
+        <menuitem 
+            id="menu_rent_receipt_property"
+            name="Properties"
+            action="action_rent_receipt_property"
+            sequence="1"
+        />
+        <menuitem 
+            id="menu_rent_receipt_location"
+            name="Locations"
+            action="action_rent_receipt_location"
+            sequence="2"
+        />
+    </menuitem>   
+</odoo>

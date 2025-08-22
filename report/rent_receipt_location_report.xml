@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <record id="rent_receipt_location" model="ir.actions.report">
+            <field name="name">Rent receipt Location</field>
+            <field name="model">rent_receipt.location</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">rent_receipt_property_management.report_rent_receipt_location</field>
+            <field name="report_file">rent_receipt_property_management.report_rent_receipt_location</field>
+            <field name="print_report_name">'Mon super rapport'</field>
+            <field name="binding_model_id" ref="rent_receipt_property_management.model_rent_receipt_location"/>  
+        </record>
+
+    </data>
+    
+</odoo>
