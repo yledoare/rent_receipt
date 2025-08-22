@@ -6,10 +6,10 @@
 Long description of module's purpose
     """,
     'author': "OS4B",
-    'website': "https://www.os4b.com",
+    'website': "https://www.os4b.bzh",
 
     'category': 'Rental',
-    'version': '0.1',
+    'version': '0.2',
 
     'depends': [
         'base',
@@ -28,6 +28,9 @@ Long description of module's purpose
         # MENU
         'views/menu.xml',
     ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
 
 }
 
