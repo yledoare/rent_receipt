@@ -1,14 +1,11 @@
 <odoo>
   <data>
     <record id="view_rent_receipt_location_form" model="ir.ui.view">
-      <field name="name">rent_receipt.location.form</field>
-      <field name="model">rent_receipt.location</field>
+      <field name="name">rent.receipt.location.form</field>
+      <field name="model">rent.receipt.location</field>
       <field name="arch" type="xml">
         <form string="Contract Location">
             <sheet>
-                <div name="button_box" class="oe_button_box">
-                    <button type="object" name="rainbow" string="Rainbow"/>
-                </div>
                 <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
                 <group>
                     <group>
@@ -19,19 +16,14 @@
                     <group>
                         <field name="property_id"/>
                         <field name="customer_id"/>
-                        <field name="bailleur_id"/>
                         <field name="seller_id"/>
                         <field name="amount"/>
-                        <field name="commission"/>
-                        <field name="amount_commission"/>
+                        <field name="amount_charges"/>
                         <field name="amount_net"/>
                     </group>
                     <notebook>
                         <page string="Description">
                             <field name="description"/>
-                        </page>
-                        <page string="coucou">
-                            <div>Voici un super Onglet</div>
                         </page>
                     </notebook>
                 </group>
@@ -42,14 +34,13 @@
     </record>
 
     <record id="view_rent_receipt_location_list" model="ir.ui.view">
-      <field name="name">rent_receipt.location.list</field>
-      <field name="model">rent_receipt.location</field>
+      <field name="name">rent.receipt.location.list</field>
+      <field name="model">rent.receipt.location</field>
       <field name="arch" type="xml">
         <tree string="Rent Receipt Location">
             <field name="name"/>
             <field name="property_id"/>
             <field name="customer_id"/>
-            <field name="bailleur_id"/>
             <field name="seller_id"/>
             <field name="amount"/>
         </tree>
@@ -58,7 +49,7 @@
 
     <record id="action_rent_receipt_location" model="ir.actions.act_window">
       <field name="name">Rent Receipt Location</field>
-      <field name="res_model">rent_receipt.location</field>
+      <field name="res_model">rent.receipt.location</field>
       <field name="view_mode">list,form</field>
     </record>
 

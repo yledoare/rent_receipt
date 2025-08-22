@@ -18,16 +18,13 @@ Long description of module's purpose
 
     'data': [
         # SECURITY
-        'security/res_groups.xml',
-        'security/ir_rule.xml',
         'security/ir.model.access.csv',
         # VIEWS
         'views/rent_receipt_property_views.xml',
-        'views/res_partner_views.xml',
         'views/rent_receipt_location.xml',
         #REPORT
-        'report/rent_receipt_location_report.xml',
-        'report/rent_receipt_location_report_template.xml',
+        #'report/rent_receipt_location_report.xml',
+        #'report/rent_receipt_location_report_template.xml',
         # MENU
         'views/menu.xml',
     ],
