@@ -9,7 +9,7 @@ Long description of module's purpose
     'website': "https://www.os4b.bzh",
 
     'category': 'Rental',
-    'version': '0.2',
+    'version': '0.3',
 
     'depends': [
         'base',

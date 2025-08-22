@@ -31,12 +31,12 @@
       <field name="name">rent.receipt.location.list</field>
       <field name="model">rent.receipt.location</field>
       <field name="arch" type="xml">
-        <tree string="Rent Receipt Location">
+        <list string="Rent Receipt Location">
             <field name="property_id"/>
             <field name="customer_id"/>
             <field name="seller_id"/>
             <field name="amount"/>
-        </tree>
+        </list>
       </field>
     </record>
 
