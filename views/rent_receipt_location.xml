@@ -13,6 +13,8 @@
                         <field name="amount"/>
                         <field name="amount_charges"/>
                         <field name="amount_net"/>
+                        <field name="currency"/>
+                        <field name="payment_day"/>
                     </group>
                     <notebook>
                         <page string="Property address">
@@ -43,6 +45,10 @@
             <field name="property_id"/>
             <field name="customer_id"/>
             <field name="amount"/>
+            <field name="amount_charges"/>
+            <field name="amount_net"/>
+            <field name="currency"/>
+            <field name="payment_day"/>
         </list>
       </field>
     </record>

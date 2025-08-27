@@ -1,55 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_rent_receipt_location">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.external_layout">
-                    <div class="text-center">
-                        <h2>Rental Receipt</h2>
-                    </div>
-                    <div>
-                        <span t-field="doc.name_of_owner"/><br/>
-                        <span t-field="doc.street_of_owner"/><br/>
-		                <span t-field="doc.zip_of_owner"/>
-		                <span t-field="doc.city_of_owner"/>
-                        
-                    </div>
-                    <div class="row" style="margin-left:600px;">
-                        <span t-field="doc.name_of_customer"/><br/>
-                        <span t-field="doc.street_of_property"/><br/>
-		                <span t-field="doc.zip_of_property"/>
-		                <span t-field="doc.city_of_property"/>
-                    </div>
-                    <div>
-                      <p><span t-field="doc.customer_id.title"/>, </p>
-		      <p>
-			      <t>I, the undersigned</t>
-			      <span t-field="doc.name_of_owner"/>
-			      <t>, owner of the accommodation located</t> 
-			      <span t-field="doc.street_of_property"/>
-			      <t>declares having received</t>
-			      <span t-field="doc.name_of_customer"/><t>, the sum of </t>  
-		      <span t-field="doc.amount"/> euros
-	      	      </p>
-		      <p><t>, for the payment of rent and charges for the rental period of the month</t>
-		      <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/>
-		      <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/><t> and gives him a receipt, subject to all my rights.</t></p>
-                    </div>
-		    <h3 class="text-center"><t>Details of the regulations : </t></h3>
-                    <div style="margin-left:200px;">
-			    <p><strong><t>Rent:</t></strong> <span t-field="doc.amount"/></p>
-                      <p><strong>Provision for charges:</strong> <span t-field="doc.amount_charges"/></p>
-                      <p><strong>Total rent :</strong> <span t-field="doc.amount"/></p>
-                      <p><strong>Paiement date :</strong> 10<span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/></p>
-                    </div>
-                    <div>
-			    <p><t>I thank you in advance and please accept the expression of my most distinguished sentiments.</t><br/><br/>
-				    <span t-field="doc.city_of_owner"/><t>, the </t><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
-			<span t-field="doc.name_of_owner"/>. <br/>
-                    </p>
-                    </div>
-                </t>
-            </t>
+  <template id="report_rent_receipt_location">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="web.external_layout">
+          <div class="text-center">
+            <h2>Rental Receipt</h2>
+          </div>
+          <div>
+		  <strong><span t-field="doc.name_of_owner"/></strong>
+            <br/>
+            <span t-field="doc.street_of_owner"/>
+            <br/>
+            <span t-field="doc.zip_of_owner"/> <span t-field="doc.city_of_owner"/>
+			  <br/><br/>
+          </div>
+          <div class="row" style="margin-left:500px;">
+		  <strong><span t-field="doc.name_of_customer"/></strong>
+            <br/>
+            <span t-field="doc.street_of_property"/>
+            <br/>
+            <span t-field="doc.zip_of_property"/> <span t-field="doc.city_of_property"/>
+          </div>
+          <p><span t-field="doc.customer_id.title"/>, </p>
+          <p><t>I, the undersigned </t><span t-field="doc.name_of_owner"/><t>, owner of the accommodation located </t><span t-field="doc.street_of_property"/><t> declares having received </t><span t-field="doc.name_of_customer"/><t>, the sum of </t><span t-field="doc.amount_net"/> <span t-field="doc.currency" />
+            <t>, for the payment of rent and charges for the rental period of the month</t>
+            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/>
+            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+            <t> and gives him a receipt, subject to all my rights.</t>
+          </p>
+          <h3 class="text-center">
+            <t>Details of the regulations : </t>
+          </h3>
+          <div style="margin-left:200px;">
+            <p>
+              <strong>
+                <t>Rent:</t>
+              </strong>
+              <span t-field="doc.amount"/>
+            </p>
+            <p>
+              <strong>
+                <t>Provision for charges:</t>
+              </strong>
+              <span t-field="doc.amount_charges"/>
+            </p>
+            <p>
+              <strong>
+                <t>Total rent :</t>
+              </strong>
+              <span t-field="doc.amount_net"/>
+            </p>
+            <p><strong><t>Payment date : </t></strong><span t-field="doc.payment_day"/><span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/></p>
+          </div>
+          <div>
+		  <p>
+			  <t>I thank you in advance and please accept the expression of my most distinguished sentiments.</t>
+			  <br/><br/>
+			  <strong><span t-field="doc.city_of_owner"/></strong>
+			  <t>, the </t>
+			  <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/></strong>
+		  </p>
+          </div>
         </t>
-    </template>
+      </t>
+    </t>
+  </template>
 </odoo>

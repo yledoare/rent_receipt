@@ -18,8 +18,23 @@ class RentReceiptLocation(models.Model):
     customer_id = fields.Many2one('res.partner', string='Customer')
     #seller_id = fields.Many2one('res.users', string='Seller')
     amount = fields.Float('Amount')
+    payment_day = fields.Integer('Payment day')
     amount_charges = fields.Float('Amount charges')
     amount_net = fields.Float('Amount Net')
+    currency = fields.Char('Currency', default="Euros")
+
+    amount_net = fields.Float(compute="_compute_total")
+
+    @api.depends("amount")
+    def _compute_total(self):
+        for record in self:
+            record.amount_net = record.amount_charges + record.amount
+
+    @api.depends("amount_charges")
+    def _compute_total(self):
+        for record in self:
+            record.amount_net = record.amount_charges + record.amount
+
     name_of_customer = fields.Char(
         string='Customer Name',
         related='customer_id.name')

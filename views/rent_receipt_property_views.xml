@@ -8,15 +8,12 @@
           <sheet>
             <group>
               <field name="name"/>
-              <field name="description"/>
               <field name="owner_id"
                 options="{'no_open': True, 'no_create': True}"
               />
               <field name="street"/>
-              <field name="city"/>
               <field name="zip"/>
-              <field name="country_id"/>
-              <field name="type"/>
+              <field name="city"/>
             </group>
           </sheet>
         </form>
@@ -28,13 +25,10 @@
       <field name="arch" type="xml">
         <list string="Rent Receipt Property List">
           <field name="name"/>
-          <field name="description"/>
           <field name="owner_id"/>
           <field name="street"/>
-          <field name="city"/>
           <field name="zip"/>
-          <field name="country_id"/>
-          <field name="type"/>
+          <field name="city"/>
         </list>
       </field>
     </record>

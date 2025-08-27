@@ -20,10 +20,10 @@ class RentReceiptProperty(models.Model):
         string='Owner',
         required=True
     )
-    street = fields.Char('street')
-    city = fields.Char('city')
-    zip = fields.Char('zip')
-    country_id = fields.Many2one('res.country', string='country')
+    street = fields.Char('Street')
+    city = fields.Char('City')
+    zip = fields.Char('Zip')
+    country_id = fields.Many2one('res.country', string='Country')
     type = fields.Selection([
         ('appartement', 'Appartement'),
         ('house', 'House'),

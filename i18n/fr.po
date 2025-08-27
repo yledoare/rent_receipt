@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-27 16:23+0000\n"
-"PO-Revision-Date: 2025-08-27 16:23+0000\n"
+"POT-Creation-Date: 2025-08-27 19:59+0000\n"
+"PO-Revision-Date: 2025-08-27 19:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,18 +22,13 @@ msgstr "'Quittance de loyer'"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid ",for the payment of rent and charges for the rental period of the month"
-msgstr ",au titre du paiement du loyer et des charges pour la période de location du mois de"
+msgid ", owner of the accommodation located "
+msgstr ", propriétaire du logement situé "
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
 msgid ", the"
 msgstr ", le"
-
-#. module: rent_receipt
-#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid ", owner of the accommodation located"
-msgstr ", propriétaire du logement situé"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
@@ -47,22 +42,7 @@ msgstr ""
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "<strong>Paiement date :</strong> 10"
-msgstr ""
-
-#. module: rent_receipt
-#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "<strong>Provision for charges:</strong>"
-msgstr "<strong>Provision pour charges:</strong>"
-
-#. module: rent_receipt
-#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "<strong>Rent:</strong>"
-msgstr ""
-
-#. module: rent_receipt
-#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "<strong>Total rent :</strong>"
+msgid "10"
 msgstr ""
 
 #. module: rent_receipt
@@ -93,17 +73,17 @@ msgstr ""
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__amount
 msgid "Amount"
-msgstr ""
+msgstr "Montant"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__amount_net
 msgid "Amount Net"
-msgstr ""
+msgstr "Montant total"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__amount_charges
 msgid "Amount charges"
-msgstr ""
+msgstr "Charges locatives"
 
 #. module: rent_receipt
 #: model:ir.model.fields.selection,name:rent_receipt.selection__rent_receipt_property__type__appartement
@@ -117,13 +97,19 @@ msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__city_of_property
+#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__city
 msgid "City"
-msgstr ""
+msgstr "Ville"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.view_rent_receipt_location_form
 msgid "Contract Location"
 msgstr ""
+
+#. module: rent_receipt
+#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__country_id
+msgid "Country"
+msgstr "Pays"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__create_uid
@@ -156,7 +142,7 @@ msgstr ""
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
 msgid "Details of the regulations :"
-msgstr ""
+msgstr "Détail du paiement :"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__display_name
@@ -192,12 +178,12 @@ msgstr ""
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
 msgid "I thank you in advance and please accept the expression of my most distinguished sentiments."
-msgstr "Je vous remercie d’avance et je vous prie d’agréer, l’expression de mes sentiments les plus distingués."
+msgstr "Je vous remercie d'avance et je vous prie d'agréer, l'expression de mes sentiments les plus distingués"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "I, the undersigned"
-msgstr "Je, soussigné"
+msgid "I, the undersigned "
+msgstr "Je, soussigné "
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__id
@@ -270,7 +256,7 @@ msgstr ""
 #. module: rent_receipt
 #: model:ir.ui.menu,name:rent_receipt.menu_rent_receipt_location
 msgid "Locations"
-msgstr ""
+msgstr "Loyers"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__message_has_error
@@ -290,7 +276,7 @@ msgstr ""
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__activity_date_deadline
@@ -335,59 +321,69 @@ msgstr ""
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__owner_id
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__city_of_owner
-msgid "Owner City"
+msgid "Ville du propriétaire"
 msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__name_of_owner
-msgid "Owner Name"
+msgid "Nom du propriétaire"
 msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__street_of_owner
-msgid "Owner Street"
+msgid "Rue du propriétaire"
 msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__zip_of_owner
 msgid "Owner Zip"
-msgstr ""
+msgstr "Code postal du propriétaire"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.view_rent_receipt_location_form
 msgid "Owner address"
-msgstr ""
+msgstr "Adresse du propriétaire"
+
+#. module: rent_receipt
+#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
+msgid "Payment date : "
+msgstr "Date de paiement : "
 
 #. module: rent_receipt
 #: model:ir.ui.menu,name:rent_receipt.menu_rent_receipt_property
 msgid "Properties"
-msgstr ""
+msgstr "Biens"
 
 #. module: rent_receipt
 #: model:ir.model,name:rent_receipt.model_rent_receipt_property
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__property_id
 msgid "Property"
-msgstr ""
+msgstr "Bien"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.view_rent_receipt_location_form
 msgid "Property address"
-msgstr ""
+msgstr "Adresse du bien"
+
+#. module: rent_receipt
+#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
+msgid "Provision for charges:"
+msgstr "Provisions pour charges :"
 
 #. module: rent_receipt
 #: model:ir.actions.act_window,name:rent_receipt.action_rent_receipt_location
 #: model_terms:ir.ui.view,arch_db:rent_receipt.view_rent_receipt_location_list
 msgid "Rent Receipt Location"
-msgstr ""
+msgstr "Locations"
 
 #. module: rent_receipt
 #: model:ir.ui.menu,name:rent_receipt.menu_rent_receipt_property_root
 msgid "Rent Receipt Management"
-msgstr ""
+msgstr "Gestion des quittances de loyer"
 
 #. module: rent_receipt
 #: model:ir.actions.act_window,name:rent_receipt.action_rent_receipt_property
@@ -412,6 +408,11 @@ msgstr ""
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
+msgid "Rent:"
+msgstr "Location:"
+
+#. module: rent_receipt
+#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
 msgid "Rental Receipt"
 msgstr "Quittance de loyer"
 
@@ -431,13 +432,19 @@ msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__street_of_property
+#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__street
 msgid "Street"
-msgstr ""
+msgstr "Rue"
 
 #. module: rent_receipt
 #: model:ir.model.constraint,message:rent_receipt.constraint_rent_receipt_property_unique_name
 msgid "The name of the property must be unique"
 msgstr ""
+
+#. module: rent_receipt
+#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
+msgid "Total rent :"
+msgstr "Loyer total :"
 
 #. module: rent_receipt
 #: model:ir.model.fields,help:rent_receipt.field_rent_receipt_location__activity_exception_decoration
@@ -456,8 +463,9 @@ msgstr ""
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_location__zip_of_property
+#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__zip
 msgid "Zip"
-msgstr ""
+msgstr "Code postal"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
@@ -465,19 +473,9 @@ msgid "and gives him a receipt, subject to all my rights."
 msgstr "et lui en donne quittance, sous réserve de tous mes droits"
 
 #. module: rent_receipt
-#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__city
-msgid "city"
-msgstr ""
-
-#. module: rent_receipt
-#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__country_id
-msgid "country"
-msgstr ""
-
-#. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
-msgid "declares having received"
-msgstr "déclare avoir reçu de"
+msgid " declares having received "
+msgstr " déclare avoir reçu de "
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
@@ -485,16 +483,11 @@ msgid "euros"
 msgstr ""
 
 #. module: rent_receipt
-#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__street
-msgid "street"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:rent_receipt.report_rent_receipt_location
+msgid ", for the payment of rent and charges for the rental period of the month"
+msgstr ", au titre du paiement du loyer et des charges pour la période de location du mois de"
 
 #. module: rent_receipt
 #: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__type
 msgid "type"
-msgstr ""
-
-#. module: rent_receipt
-#: model:ir.model.fields,field_description:rent_receipt.field_rent_receipt_property__zip
-msgid "zip"
 msgstr ""
