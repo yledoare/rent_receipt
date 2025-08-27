@@ -10,14 +10,22 @@
                     <group>
                         <field name="property_id"/>
                         <field name="customer_id"/>
-                        <field name="seller_id"/>
                         <field name="amount"/>
                         <field name="amount_charges"/>
                         <field name="amount_net"/>
                     </group>
                     <notebook>
-                        <page string="Description">
-                            <field name="description"/>
+                        <page string="Property address">
+                            <field name="name_of_customer"/>
+                            <field name="street_of_property"/>
+                            <field name="zip_of_property"/>
+                            <field name="city_of_property"/>
+                        </page>
+                        <page string="Owner address">
+                            <field name="name_of_owner"/>
+                            <field name="street_of_owner"/>
+                            <field name="zip_of_owner"/>
+                            <field name="city_of_owner"/>
                         </page>
                     </notebook>
                 </group>
@@ -34,7 +42,6 @@
         <list string="Rent Receipt Location">
             <field name="property_id"/>
             <field name="customer_id"/>
-            <field name="seller_id"/>
             <field name="amount"/>
         </list>
       </field>
