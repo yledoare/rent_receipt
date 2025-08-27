@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "rent_receipt_property_management",
+    'name': "Rental receipt",
     'summary': "Print rental receipt ",
     'description': """
 Long description of module's purpose
@@ -9,7 +9,7 @@ Long description of module's purpose
     'website': "https://www.os4b.bzh",
 
     'category': 'Rental',
-    'version': '0.5',
+    'version': '0.6',
 
     'depends': [
         'base',
