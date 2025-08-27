@@ -5,7 +5,7 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="text-center">
-                        <h2>Rental Receipt Location</h2>
+                        <h2>Rental Receipt</h2>
                     </div>
                     <div>
                         <span t-field="doc.name_of_owner"/><br/>
@@ -22,23 +22,30 @@
                     </div>
                     <div>
                       <p><span t-field="doc.customer_id.title"/>, </p>
-                      <p>Je soussigné <span t-field="doc.name_of_owner"/>, propriétaire du logement situé <span t-field="doc.street_of_property"/> déclare avoir</p>
-                      <p>reçu de <span t-field="doc.name_of_customer"/>, la somme de <span t-field="doc.amount"/> euros</p>
-                      <p> , au titre du paiement du loyer et des <br/>charges pour la période de location du mois de Juillet <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/> et lui en donne quittance, sous <br/>
-réserve de tous mes droits.</p>
+		      <p>
+			      <t>I, the undersigned</t>
+			      <span t-field="doc.name_of_owner"/>
+			      <t>, owner of the accommodation located</t> 
+			      <span t-field="doc.street_of_property"/>
+			      <t>declares having received</t>
+			      <span t-field="doc.name_of_customer"/><t>, the sum of </t>  
+		      <span t-field="doc.amount"/> euros
+	      	      </p>
+		      <p><t>, for the payment of rent and charges for the rental period of the month</t>
+		      <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/>
+		      <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/><t> and gives him a receipt, subject to all my rights.</t></p>
                     </div>
-                    <h3 class="text-center">Détail du règlement : </h3>
+		    <h3 class="text-center"><t>Details of the regulations : </t></h3>
                     <div style="margin-left:200px;">
-                      <p><strong>Loyer:</strong> <span t-field="doc.amount"/></p>
-                      <p><strong>Provision pour charges:</strong> <span t-field="doc.amount_charges"/></p>
-                      <p><strong>Total du loyer :</strong> <span t-field="doc.amount"/></p>
-                      <p><strong>Date du paiement :</strong> 10<span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/></p>
+			    <p><strong><t>Rent:</t></strong> <span t-field="doc.amount"/></p>
+                      <p><strong>Provision for charges:</strong> <span t-field="doc.amount_charges"/></p>
+                      <p><strong>Total rent :</strong> <span t-field="doc.amount"/></p>
+                      <p><strong>Paiement date :</strong> 10<span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/></p>
                     </div>
                     <div>
-                    <p>
-Je vous remercie d’avance et je vous prie d’agréer, l’expression de mes sentiments les plus distingués. <br/><br/>
-<span t-field="doc.city_of_owner"/>, le <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
-<span t-field="doc.name_of_owner"/>. <br/>
+			    <p><t>I thank you in advance and please accept the expression of my most distinguished sentiments.</t><br/><br/>
+				    <span t-field="doc.city_of_owner"/><t>, the </t><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+			<span t-field="doc.name_of_owner"/>. <br/>
                     </p>
                     </div>
                 </t>
