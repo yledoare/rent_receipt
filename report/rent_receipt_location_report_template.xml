@@ -23,7 +23,7 @@
             <span t-field="doc.zip_of_property"/> <span t-field="doc.city_of_property"/>
           </div>
           <p><span t-field="doc.customer_id.title"/>, </p>
-          <p><t>I, the undersigned </t><span t-field="doc.name_of_owner"/><t>, owner of the accommodation located </t><span t-field="doc.street_of_property"/><t> declares having received </t><span t-field="doc.name_of_customer"/><t>, the sum of </t><span t-field="doc.amount_net"/> <span t-field="doc.currency" />
+          <p><t>I, the undersigned </t><span t-field="doc.name_of_owner"/><t>, owner of the accommodation located </t><span t-field="doc.street_of_property"/><t> declares having received </t><span t-field="doc.name_of_customer"/><t>, the sum of </t><span t-options='{"widget": "float", "precision": 2}' t-field="doc.amount_net"/> <span t-field="doc.currency" />
             <t>, for the payment of rent and charges for the rental period of the month</t>
             <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/>
             <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
@@ -37,21 +37,24 @@
               <strong>
                 <t>Rent:</t>
               </strong>
-              <span t-field="doc.amount"/>
+	      <span t-options='{"widget": "float", "precision": 2}' t-field="doc.amount"/> <span t-field="doc.currency" />
             </p>
             <p>
               <strong>
                 <t>Provision for charges:</t>
               </strong>
-              <span t-field="doc.amount_charges"/>
+              <span t-options='{"widget": "float", "precision": 2}' t-field="doc.amount_charges"/> <span t-field="doc.currency" />
             </p>
             <p>
               <strong>
                 <t>Total rent :</t>
               </strong>
-              <span t-field="doc.amount_net"/>
+              <span t-options='{"widget": "float", "precision": 2}' t-field="doc.amount_net"/> <span t-field="doc.currency" />
             </p>
-            <p><strong><t>Payment date : </t></strong><span t-field="doc.payment_day"/><span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/></p>
+	    <p>
+		    <strong><t>Payment date : </t></strong>
+		    <span t-field="doc.payment_day"/><span t-esc="context_timestamp(datetime.datetime.now()).strftime('/%m/%Y')"/>
+	    </p>
           </div>
           <div>
 		  <p>
