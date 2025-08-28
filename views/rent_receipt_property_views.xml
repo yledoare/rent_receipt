@@ -10,7 +10,7 @@
               <field name="name"/>
               <field name="owner_id"
                 options="{'no_open': True, 'no_create': True}"
-              />
+                />
               <field name="street"/>
               <field name="zip"/>
               <field name="city"/>

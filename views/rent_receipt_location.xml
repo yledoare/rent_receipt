@@ -5,34 +5,37 @@
       <field name="model">rent.receipt.location</field>
       <field name="arch" type="xml">
         <form string="Contract Location">
-            <sheet>
-                <group>
-                    <group>
-                        <field name="property_id"/>
-                        <field name="customer_id"/>
-                        <field name="amount"/>
-                        <field name="amount_charges"/>
-                        <field name="amount_net"/>
-                        <field name="currency"/>
-                        <field name="payment_day"/>
-                    </group>
-                    <notebook>
-                        <page string="Property address">
-                            <field name="name_of_customer"/>
-                            <field name="street_of_property"/>
-                            <field name="zip_of_property"/>
-                            <field name="city_of_property"/>
-                        </page>
-                        <page string="Owner address">
-                            <field name="name_of_owner"/>
-                            <field name="street_of_owner"/>
-                            <field name="zip_of_owner"/>
-                            <field name="city_of_owner"/>
-                        </page>
-                    </notebook>
-                </group>
-            </sheet>
-            <chatter/>
+          <sheet>
+            <header>
+              <button name="send_email_with_pdf_attach" string="Send email" type="object"></button>
+            </header>
+            <group>
+              <group>
+                <field name="property_id"/>
+                <field name="customer_id"/>
+                <field name="amount"/>
+                <field name="amount_charges"/>
+                <field name="amount_net"/>
+                <field name="currency"/>
+                <field name="payment_day"/>
+              </group>
+              <notebook>
+                <page string="Property address">
+                  <field name="name_of_customer"/>
+                  <field name="street_of_property"/>
+                  <field name="zip_of_property"/>
+                  <field name="city_of_property"/>
+                </page>
+                <page string="Owner address">
+                  <field name="name_of_owner"/>
+                  <field name="street_of_owner"/>
+                  <field name="zip_of_owner"/>
+                  <field name="city_of_owner"/>
+                </page>
+              </notebook>
+            </group>
+          </sheet>
+          <chatter/>
         </form>
       </field>
     </record>
@@ -42,23 +45,20 @@
       <field name="model">rent.receipt.location</field>
       <field name="arch" type="xml">
         <list string="Rent Receipt Location">
-            <field name="property_id"/>
-            <field name="customer_id"/>
-            <field name="amount"/>
-            <field name="amount_charges"/>
-            <field name="amount_net"/>
-            <field name="currency"/>
-            <field name="payment_day"/>
+          <field name="property_id"/>
+          <field name="customer_id"/>
+          <field name="amount"/>
+          <field name="amount_charges"/>
+          <field name="amount_net"/>
+          <field name="currency"/>
+          <field name="payment_day"/>
         </list>
       </field>
     </record>
-
     <record id="action_rent_receipt_location" model="ir.actions.act_window">
       <field name="name">Rent Receipt Location</field>
       <field name="res_model">rent.receipt.location</field>
       <field name="view_mode">list,form</field>
     </record>
-
-     
   </data>
 </odoo>
