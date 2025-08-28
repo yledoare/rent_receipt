@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 from odoo.http import Response, request
-
+from odoo.exceptions import UserError
 from io import BytesIO
 import base64
 import io
@@ -17,8 +17,19 @@ class RentReceiptLocation(models.Model):
             ]
     _description = 'Rent receipt location'
 
-
     def send_email_with_pdf_attach(self):
+      template = self.env.ref('rent_receipt.model_rent_receipt_location').sudo()
+      #email_values = {'email_from': self.env.user.email}
+      #template.send_mail(self.id, force_send=True, email_values=email_values)
+      raise UserError("FIXME")
+      #template = self.env['mail.template'].browse(self.env.ref('rent_receipt.model_rent_receipt_location').id)
+        # Ensure the template exists
+      if template:
+            # Send the email using the template
+        template.send_mail(self.id, force_send=True)
+      else:
+        raise UserError("Mail Template not found. Please check the template.")
+    def action_send_mail(self):
       report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.report_rent_receipt_location", [self.id])
       pdf_base64 = base64.b64encode(report_pdf[0])
       attachment_values = {
