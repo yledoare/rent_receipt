@@ -25,12 +25,14 @@
                   <field name="street_of_property"/>
                   <field name="zip_of_property"/>
                   <field name="city_of_property"/>
+                  <field name="email_of_customer"/>
                 </page>
                 <page string="Owner address">
                   <field name="name_of_owner"/>
                   <field name="street_of_owner"/>
                   <field name="zip_of_owner"/>
                   <field name="city_of_owner"/>
+                  <field name="email_of_owner"/>
                 </page>
               </notebook>
             </group>

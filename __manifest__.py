@@ -9,7 +9,7 @@ Long description of module's purpose
     'website': "https://www.os4b.bzh",
 
     'category': 'Rental',
-    'version': '0.9',
+    'version': '0.91',
 
     'depends': [
         'base',
@@ -22,7 +22,9 @@ Long description of module's purpose
         # VIEWS
         'views/rent_receipt_property_views.xml',
         'views/rent_receipt_location.xml',
-        #REPORT
+        # MAIL
+        'views/rent_receipt_email.xml',
+        # REPORT
         'report/rent_receipt_location_report.xml',
         'report/rent_receipt_location_report_template.xml',
         # MENU

@@ -21,8 +21,6 @@ class RentReceiptLocation(models.Model):
     def send_email_with_pdf_attach(self):
       report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.report_rent_receipt_location", [self.id])
       pdf_base64 = base64.b64encode(report_pdf[0])
-      return True
-      # TO be continued
       attachment_values = {
         'name': "THEFILE.pdf",
         'type': 'binary',
@@ -31,21 +29,24 @@ class RentReceiptLocation(models.Model):
       }
       attachment = self.env['ir.attachment'].create(attachment_values)
       ir_values = {
-            'name': 'Invoice Report',
+            'name': 'Rent receipt Report',
             'type': 'binary',
-            'datas': data_record,
-            'store_fname': data_record,
-            'mimetype': 'application/vnd.ms-excel',
-            'res_model': 'rent.receipt',
+            'res_model': 'rent.receipt.location',
             }
-      email_template = self.env.ref('module_name.email_template')
+      email_template = self.env.ref('rent_receipt.model_rent_receipt_location')
+      print(self.customer_id.email)
+      print(self.property_id.owner_id.email)
+      return True
+      # TO be continued
+
       if email_template:
             email_values = {
-                'email_to': self.partner_id.email,
-                'email_from': self.env.user.email,
+                'email_to': self.customer_id.email,
+                'email_from': self.property_id.owner_id.email,
                 }
-            email_template.attachment_ids = [(4, attachment.id)]
-            email_template.send_mail(self.id, email_values=email_values)
+            #email_template.attachment_ids = [(4, attachment.id)]
+            #email_template.send_mail(self.id, email_values=email_values)
+            email_template.send_mail(self.id)
             email_template.attachment_ids = [(5, 0, 0)]
 
     #name = fields.Char('Name')
@@ -74,6 +75,9 @@ class RentReceiptLocation(models.Model):
     name_of_customer = fields.Char(
             string='Customer Name',
             related='customer_id.name')
+    email_of_customer = fields.Char(
+            string='Customer Email',
+            related='customer_id.email')
     zip_of_property = fields.Char(
             string='Zip',
             related='property_id.zip')
@@ -95,3 +99,6 @@ class RentReceiptLocation(models.Model):
     city_of_owner = fields.Char(
             string='Owner City',
             related='property_id.owner_id.city')
+    email_of_owner = fields.Char(
+            string='Owner Email',
+            related='property_id.owner_id.email')
