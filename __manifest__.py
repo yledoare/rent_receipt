@@ -24,7 +24,7 @@ Long description of module's purpose
         'views/rent_receipt_property_views.xml',
         'views/rent_receipt_location.xml',
         # MAIL
-        #'views/rent_receipt_email.xml',
+        'views/rent_receipt_email.xml',
         # REPORT
         'report/rent_receipt_location_report.xml',
         'report/rent_receipt_location_report_template.xml',
