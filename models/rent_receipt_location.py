@@ -19,8 +19,8 @@ class RentReceiptLocation(models.Model):
 
     def send_email_with_pdf_attach(self):
       # OK template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
-      raise UserError("FIXME")
-      template = self.env.ref('rent_receipt_location.mail_template_yld')
+      #raise UserError("FIXME")
+      template = self.env.ref('rent-receipt.mail_template_receipt_location')
       #email_values = {'email_from': self.env.user.email}
       #template.send_mail(self.id, force_send=True, email_values=email_values)
       #template = self.env['mail.template'].browse(self.env.ref('rent_receipt.model_rent_receipt_location').id)
