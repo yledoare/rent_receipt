@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 	<data>
-		<record id="mail_template_yld" model="mail.template">
+		<record id="mail_template_receipt_location" model="mail.template">
 			<field name="name">Email Template For rent receipt</field>
 			<field name="model_id" ref="model_rent_receipt_location"/>
 			<field name="email_from">{{object.property_id.owner_id.email}}</field>
@@ -19,7 +19,7 @@
 					<br/>
 					Regards,
 					<br/>
-					<t t-out="object.object.property_id.owner_id.name"/>
+					<t t-out="object.property_id.owner_id.name"/>
 					<br/>
 				</div>
 			</field>
