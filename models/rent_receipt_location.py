@@ -20,7 +20,7 @@ class RentReceiptLocation(models.Model):
     def action_send_mail(self):
       # OK template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
       #raise UserError("FIXME")
-      template = self.env.ref('rent-receipt.mail_template_receipt_location')
+      template = self.env.ref('rent_receipt.mail_template_receipt_location')
       #email_values = {'email_from': self.env.user.email}
       #template.send_mail(self.id, force_send=True, email_values=email_values)
       #template = self.env['mail.template'].browse(self.env.ref('rent_receipt.model_rent_receipt_location').id)
@@ -31,10 +31,10 @@ class RentReceiptLocation(models.Model):
       else:
         raise UserError("Mail Template not found. Please check the template.")
     def send_email_with_pdf_attach(self):
-      report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent-receipt.rent_receipt_location_report", [self.id])
+      report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.rent_receipt_location_report", [self.id])
       pdf_base64 = base64.b64encode(report_pdf[0])
       attachment_values = {
-        'name': "THEFILE.pdf",
+        'name': "Rent receipt" + ".pdf",
         'type': 'binary',
         'datas': pdf_base64,
         'mimetype': 'application/pdf',
@@ -45,14 +45,17 @@ class RentReceiptLocation(models.Model):
             'type': 'binary',
             'res_model': 'rent.receipt.location',
             }
-      email_template = self.env.ref('rent-receipt.mail_template_receipt_location')
+      email_template = self.env.ref('rent_receipt.mail_template_receipt_location')
+      email_template.attachment_ids = [(4, attachment.id)]
       print(self.customer_id.email)
       print(self.property_id.owner_id.email)
       # return True
       # TO be continued
 
       if email_template:
+            # send mail 
             email_template.send_mail(self.id)
+            # delete attachment
             email_template.attachment_ids = [(5, 0, 0)]
 
     #name = fields.Char('Name')
