@@ -34,7 +34,7 @@ class RentReceiptLocation(models.Model):
       report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.rent_receipt_location_report", [self.id])
       pdf_base64 = base64.b64encode(report_pdf[0])
       attachment_values = {
-        'name': "THEFILE.pdf",
+        'name': "Rent receipt" + ".pdf",
         'type': 'binary',
         'datas': pdf_base64,
         'mimetype': 'application/pdf',
@@ -46,13 +46,16 @@ class RentReceiptLocation(models.Model):
             'res_model': 'rent.receipt.location',
             }
       email_template = self.env.ref('rent_receipt.mail_template_receipt_location')
+      email_template.attachment_ids = [(4, attachment.id)]
       print(self.customer_id.email)
       print(self.property_id.owner_id.email)
       # return True
       # TO be continued
 
       if email_template:
+            # send mail 
             email_template.send_mail(self.id)
+            # delete attachment
             email_template.attachment_ids = [(5, 0, 0)]
 
     #name = fields.Char('Name')
