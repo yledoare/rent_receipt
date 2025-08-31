@@ -49,10 +49,10 @@ class RentReceiptLocation(models.Model):
             }
       email_template = self.env.ref('rent_receipt.mail_template_receipt_location')
       email_template.attachment_ids = [(4, attachment.id)]
-      print(self.customer_id.email)
-      print(self.property_id.owner_id.email)
-      print(self.current_month)
-      print(self.current_year)
+      #print(self.customer_id.email)
+      #print(self.property_id.owner_id.email)
+      #print(self.current_month)
+      #print(self.current_year)
       # return True
       # TO be continued
 

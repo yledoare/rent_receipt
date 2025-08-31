@@ -471,7 +471,7 @@ msgstr ""
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.rent_receipt_location_report
 msgid "Rent:"
-msgstr "Locatio,:"
+msgstr "Location:"
 
 #. module: rent_receipt
 #: model_terms:ir.ui.view,arch_db:rent_receipt.rent_receipt_location_report
