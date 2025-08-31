@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.http import Response, request
 from odoo.exceptions import UserError
 from io import BytesIO
 import base64
 import io
+import datetime
+from datetime import datetime
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 class RentReceiptLocation(models.Model):
@@ -34,7 +36,7 @@ class RentReceiptLocation(models.Model):
       report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.rent_receipt_location_report", [self.id])
       pdf_base64 = base64.b64encode(report_pdf[0])
       attachment_values = {
-        'name': "Rent receipt" + ".pdf",
+        'name': _("Rent receipt") + ".pdf",
         'type': 'binary',
         'datas': pdf_base64,
         'mimetype': 'application/pdf',
@@ -47,8 +49,10 @@ class RentReceiptLocation(models.Model):
             }
       email_template = self.env.ref('rent_receipt.mail_template_receipt_location')
       email_template.attachment_ids = [(4, attachment.id)]
-      print(self.customer_id.email)
-      print(self.property_id.owner_id.email)
+      #print(self.customer_id.email)
+      #print(self.property_id.owner_id.email)
+      #print(self.current_month)
+      #print(self.current_year)
       # return True
       # TO be continued
 
@@ -67,9 +71,19 @@ class RentReceiptLocation(models.Model):
     payment_day = fields.Integer('Payment day')
     amount_charges = fields.Float('Amount charges')
     amount_net = fields.Float('Amount Net')
+    current_month = fields.Char(compute="_get_current_month")
+    current_year = fields.Char(compute="_get_current_year")
     currency = fields.Char('Currency', default="Euros")
 
     amount_net = fields.Float(compute="_compute_total")
+
+    def _get_current_year(self):
+        for record in self:
+            record.current_year =  datetime.now().strftime("%Y");
+
+    def _get_current_month(self):
+        for record in self:
+            record.current_month =  datetime.now().strftime("%B");
 
     @api.depends("amount")
     def _compute_total(self):
