@@ -9,6 +9,7 @@ import io
 import datetime
 from datetime import datetime
 from PyPDF2 import PdfFileReader, PdfFileWriter
+import locale
 
 class RentReceiptLocation(models.Model):
     _name = 'rent.receipt.location'
@@ -20,15 +21,8 @@ class RentReceiptLocation(models.Model):
     _description = 'Rent receipt location'
 
     def action_send_mail(self):
-      # OK template = self.env.ref('auth_signup.mail_template_user_signup_account_created')
-      #raise UserError("FIXME")
       template = self.env.ref('rent_receipt.mail_template_receipt_location')
-      #email_values = {'email_from': self.env.user.email}
-      #template.send_mail(self.id, force_send=True, email_values=email_values)
-      #template = self.env['mail.template'].browse(self.env.ref('rent_receipt.model_rent_receipt_location').id)
-        # Ensure the template exists
       if template:
-            # Send the email using the template
         template.send_mail(self.id, force_send=True)
       else:
         raise UserError("Mail Template not found. Please check the template.")
@@ -82,6 +76,10 @@ class RentReceiptLocation(models.Model):
             record.current_year =  datetime.now().strftime("%Y");
 
     def _get_current_month(self):
+        print("Customer locale : " + self.customer_id.lang)
+        #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+        #locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+        locale.setlocale(locale.LC_ALL, self.customer_id.lang + '.UTF-8')
         for record in self:
             record.current_month =  datetime.now().strftime("%B");
 
