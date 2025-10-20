@@ -28,6 +28,7 @@ Long description of module's purpose
         # REPORT
         'report/rent_receipt_location_report.xml',
         'report/rent_receipt_location_report_template.xml',
+	'report/disable_header.xml',
         # MENU
         'views/menu.xml',
     ],
