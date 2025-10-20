@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Custom Header & Footer: Inherited from the standard external layout -->
+    <template id="custom_standard_layout" inherit_id="web.external_layout_standard">
+        <!-- Customise the Header -->
+        <xpath expr="//div[contains(@t-attf-class, 'header o_company_')]" position="replace">
+        </xpath>
+    </template>
+</odoo>
