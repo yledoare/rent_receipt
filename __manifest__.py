@@ -23,6 +23,7 @@ Long description of module's purpose
         # VIEWS
         'views/rent_receipt_property_views.xml',
         'views/rent_receipt_location.xml',
+        'views/res_partner_views.xml',
         # MAIL
         'data/rent_receipt_email.xml',
         # REPORT

@@ -22,7 +22,7 @@
             <br/>
             <span t-field="doc.zip_of_property"/> <span t-field="doc.city_of_property"/>
           </div>
-          <p><span t-field="doc.customer_id.title"/>, </p>
+          <p><span t-field="doc.customer_id.rent_receipt_location_title"/>, </p>
           <p><t>I, the undersigned </t><span t-field="doc.name_of_owner"/><t>, owner of the accommodation located </t><span t-field="doc.street_of_property"/><t> declares having received </t><span t-field="doc.name_of_customer"/><t>, the sum of </t><span t-options='{"widget": "float", "precision": 2}' t-field="doc.amount_net"/> <span t-field="doc.currency" />
             <t>, for the payment of rent and charges for the rental period of the month</t>
             <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%B')"/>
