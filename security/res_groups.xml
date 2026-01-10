@@ -1,9 +1,10 @@
 <odoo>
-    <record id="group_user_location" model="res.groups">
-        <field name="name">Mes Documents</field>
+    <record id="group_rent_receipt_user" model="res.groups">
+        <field name="name">Rent Receipt User</field>
     </record>
 
-    <record id="group_user_location_all_document" model="res.groups">
-        <field name="name">All Document</field>
+    <record id="group_rent_receipt_manager" model="res.groups">
+        <field name="name">Rent Receipt Manager</field>
+        <field name="implied_ids" eval="[(4, ref('rent_receipt.group_rent_receipt_user'))]"/>
     </record>
 </odoo>

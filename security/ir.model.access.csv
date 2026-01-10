@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rent_receipt_property,Access For Receipt Rent Property,model_rent_receipt_property,base.group_user,1,1,1,1
-access_rent_receipt_location,Access Receipt Rent Location,model_rent_receipt_location,base.group_user,1,1,1,1
+access_rent_receipt_property_user,Rent receipt property user,model_rent_receipt_property,rent_receipt.group_rent_receipt_user,1,0,0,0
+access_rent_receipt_property_manager,Rent receipt property manager,model_rent_receipt_property,rent_receipt.group_rent_receipt_manager,1,1,1,1
+access_rent_receipt_location_user,Rent receipt location user,model_rent_receipt_location,rent_receipt.group_rent_receipt_user,1,0,0,0
+access_rent_receipt_location_manager,Rent receipt location manager,model_rent_receipt_location,rent_receipt.group_rent_receipt_manager,1,1,1,1
