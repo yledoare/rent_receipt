@@ -1,0 +1,17 @@
+<odoo>
+    <record id="rent_receipt_property_company_rule" model="ir.rule">
+        <field name="name">Rent receipt property multi-company</field>
+        <field name="model_id" ref="model_rent_receipt_property"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('rent_receipt.group_rent_receipt_user')), (4, ref('rent_receipt.group_rent_receipt_manager'))]"/>
+    </record>
+
+    <record id="rent_receipt_location_company_rule" model="ir.rule">
+        <field name="name">Rent receipt location multi-company</field>
+        <field name="model_id" ref="model_rent_receipt_location"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('rent_receipt.group_rent_receipt_user')), (4, ref('rent_receipt.group_rent_receipt_manager'))]"/>
+    </record>
+</odoo>
+
+
