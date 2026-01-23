@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class RentReceiptProperty(models.Model):
@@ -14,13 +14,6 @@ class RentReceiptProperty(models.Model):
     description = fields.Text(
         string='Description',
         translate=True,
-    )
-    company_id = fields.Many2one(
-        'res.company',
-        string='Company',
-        required=True,
-        default=lambda self: self.env.company,
-        index=True,
     )
     owner_id = fields.Many2one(
         'res.partner',

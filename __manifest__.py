@@ -19,8 +19,6 @@ Long description of module's purpose
 
     'data': [
         # SECURITY
-        'security/res_groups.xml',
-        'security/rent_receipt_rules.xml',
         'security/ir.model.access.csv',
         # VIEWS
         'views/rent_receipt_property_views.xml',

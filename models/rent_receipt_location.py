@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.http import Response, request
 from odoo.exceptions import UserError
+from io import BytesIO
 import base64
-from babel.dates import format_datetime
-from babel.core import UnknownLocaleError
+import io
+import datetime
+from datetime import datetime
+from PyPDF2 import PdfFileReader, PdfFileWriter
+import locale
 
 class RentReceiptLocation(models.Model):
     _name = 'rent.receipt.location'
@@ -16,45 +21,43 @@ class RentReceiptLocation(models.Model):
     _description = 'Rent receipt location'
 
     def action_send_mail(self):
-        self.ensure_one()
-        template = self.env.ref('rent_receipt.mail_template_receipt_location', raise_if_not_found=False)
-        if not template:
-            raise UserError(_("Mail Template not found. Please check the template."))
+      template = self.env.ref('rent_receipt.mail_template_receipt_location')
+      if template:
         template.send_mail(self.id, force_send=True)
-
+      else:
+        raise UserError("Mail Template not found. Please check the template.")
     def send_email_with_pdf_attach(self):
-        self.ensure_one()
-        template = self.env.ref('rent_receipt.mail_template_receipt_location', raise_if_not_found=False)
-        report_action = self.env.ref('rent_receipt.action_report_rent_receipt_location', raise_if_not_found=False)
-        if not template or not report_action:
-            raise UserError(_("Unable to locate the email template or report definition."))
-
-        pdf_content, _ = report_action._render_qweb_pdf([self.id])
-        attachment = self.env['ir.attachment'].create({
-            'name': _("Rent receipt %s") % (self.display_name or self.name_of_customer),
+      report_pdf = request.env[ "ir.actions.report" ]._render_qweb_pdf( "rent_receipt.rent_receipt_location_report", [self.id])
+      pdf_base64 = base64.b64encode(report_pdf[0])
+      attachment_values = {
+        'name': _("Rent receipt") + ".pdf",
+        'type': 'binary',
+        'datas': pdf_base64,
+        'mimetype': 'application/pdf',
+      }
+      attachment = self.env['ir.attachment'].create(attachment_values)
+      ir_values = {
+            'name': 'Rent receipt Report',
             'type': 'binary',
-            'datas': base64.b64encode(pdf_content),
-            'mimetype': 'application/pdf',
-            'res_model': self._name,
-            'res_id': self.id,
-            'company_id': self.company_id.id,
-        })
-        try:
-            template.send_mail(
-                self.id,
-                force_send=True,
-                email_values={'attachment_ids': [(6, 0, [attachment.id])]},
-            )
-        finally:
-            attachment.unlink()
-        return True
+            'res_model': 'rent.receipt.location',
+            }
+      email_template = self.env.ref('rent_receipt.mail_template_receipt_location')
+      email_template.attachment_ids = [(4, attachment.id)]
+      #print(self.customer_id.email)
+      #print(self.property_id.owner_id.email)
+      #print(self.current_month)
+      #print(self.current_year)
+      # return True
+      # TO be continued
+
+      if email_template:
+            # send mail 
+            email_template.send_mail(self.id)
+            # delete attachment
+            email_template.attachment_ids = [(5, 0, 0)]
 
     #name = fields.Char('Name')
-    property_id = fields.Many2one(
-        'rent.receipt.property',
-        string='Property',
-        check_company=True,
-    )
+    property_id = fields.Many2one('rent.receipt.property', string='Property')
     description = fields.Text('Description')
     customer_id = fields.Many2one('res.partner', string='Customer')
     #seller_id = fields.Many2one('res.users', string='Seller')
@@ -65,38 +68,30 @@ class RentReceiptLocation(models.Model):
     current_month = fields.Char(compute="_get_current_month")
     current_year = fields.Char(compute="_get_current_year")
     currency = fields.Char('Currency', default="Euros")
-    company_id = fields.Many2one(
-        'res.company',
-        string='Company',
-        required=True,
-        default=lambda self: self.env.company,
-        index=True,
-    )
 
-    @api.depends('amount', 'amount_charges')
-    def _compute_total(self):
-        for record in self:
-            record.amount_net = (record.amount_charges or 0.0) + (record.amount or 0.0)
+    amount_net = fields.Float(compute="_compute_total")
 
-    @api.depends('customer_id.lang')
     def _get_current_year(self):
         for record in self:
-            now = fields.Datetime.context_timestamp(record, fields.Datetime.now())
-            lang = record.customer_id.lang or self.env.lang or 'en_US'
-            try:
-                record.current_year = format_datetime(now, "y", locale=lang)
-            except UnknownLocaleError:
-                record.current_year = now.strftime("%Y")
+            record.current_year =  datetime.now().strftime("%Y");
 
-    @api.depends('customer_id.lang')
     def _get_current_month(self):
+        print("Customer locale : " + self.customer_id.lang)
+        #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+        #locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+        locale.setlocale(locale.LC_ALL, self.customer_id.lang + '.UTF-8')
         for record in self:
-            now = fields.Datetime.context_timestamp(record, fields.Datetime.now())
-            lang = record.customer_id.lang or self.env.lang or 'en_US'
-            try:
-                record.current_month = format_datetime(now, "MMMM", locale=lang)
-            except UnknownLocaleError:
-                record.current_month = now.strftime("%B")
+            record.current_month =  datetime.now().strftime("%B");
+
+    @api.depends("amount")
+    def _compute_total(self):
+        for record in self:
+            record.amount_net = record.amount_charges + record.amount
+
+    @api.depends("amount_charges")
+    def _compute_total(self):
+        for record in self:
+            record.amount_net = record.amount_charges + record.amount
 
     name_of_customer = fields.Char(
             string='Customer Name',

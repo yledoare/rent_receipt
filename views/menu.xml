@@ -2,21 +2,18 @@
 <odoo>
   <menuitem
     id="menu_rent_receipt_property_root"
-    name="Rent Receipt Management"
-    groups="rent_receipt.group_rent_receipt_user,rent_receipt.group_rent_receipt_manager">
+    name="Rent Receipt Management">
   <menuitem 
     id="menu_rent_receipt_property"
     name="Properties"
     action="action_rent_receipt_property"
     sequence="1"
-    groups="rent_receipt.group_rent_receipt_user,rent_receipt.group_rent_receipt_manager"
     />
   <menuitem 
     id="menu_rent_receipt_location"
     name="Locations"
     action="action_rent_receipt_location"
     sequence="2"
-    groups="rent_receipt.group_rent_receipt_user,rent_receipt.group_rent_receipt_manager"
     />
 </menuitem>   
 </odoo>
