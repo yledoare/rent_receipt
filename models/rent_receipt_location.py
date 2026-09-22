@@ -52,7 +52,8 @@ class RentReceiptLocation(models.Model):
 
       if email_template:
             # send mail 
-            email_template.send_mail(self.id)
+            print("Send email")
+            email_template.send_mail(self.id,force_send=True)
             # delete attachment
             email_template.attachment_ids = [(5, 0, 0)]
 
