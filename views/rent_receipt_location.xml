@@ -11,7 +11,8 @@
             </header>
             <group>
               <group>
-                <field name="property_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="property_id" domain="[('company_id','=',company_id)]"/>
                 <field name="customer_id"/>
                 <field name="amount"/>
                 <field name="amount_charges"/>
