@@ -34,6 +34,7 @@ class RentReceiptLocation(models.Model):
         'type': 'binary',
         'datas': pdf_base64,
         'mimetype': 'application/pdf',
+        'company_id': self.company_id.id,
       }
       attachment = self.env['ir.attachment'].create(attachment_values)
       ir_values = {
@@ -58,7 +59,11 @@ class RentReceiptLocation(models.Model):
             email_template.attachment_ids = [(5, 0, 0)]
 
     #name = fields.Char('Name')
-    property_id = fields.Many2one('rent.receipt.property', string='Property')
+    property_id = fields.Many2one(
+        'rent.receipt.property',
+        string='Property',
+        check_company=True,
+    )
     description = fields.Text('Description')
     customer_id = fields.Many2one('res.partner', string='Customer')
     #seller_id = fields.Many2one('res.users', string='Seller')
@@ -69,6 +74,13 @@ class RentReceiptLocation(models.Model):
     current_month = fields.Char(compute="_get_current_month")
     current_year = fields.Char(compute="_get_current_year")
     currency = fields.Char('Currency', default="Euros")
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        required=True,
+        default=lambda self: self.env.company,
+        index=True,
+    )
 
     amount_net = fields.Float(compute="_compute_total")
 
